@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #my_camera{
+        width: 320px;
+        height: 240px;
+        border: 1px solid black;
+        }
+    </style>
+    <script type="text/javascript" src="webcamjs/webcam.min.js"></script>
+
+</head>
+<body>
+    <p> How to Auto Capture Photo </p>
+    every 30 second : <a id="demo">
+    <div id="my_camera"></div>
+    <div id="results"></div>
+    <canvas id="canvas"></canvas>
+        <div class="output">
+            <img id="photo" alt="The screen capture will appear in this box.">
+        </div>
+    <script>
+        (function() {
+
+        var width = 320; // We will scale the photo width to this
+        var height = 0; // This will be computed based on the input stream
+
+        var streaming = false;
+
+        var canvas = null;
+        var photo = null;
+
+
+        // function take_snapshot() {
+ 
+        // // take snapshot and get image data
+        // Webcam.snap( function(data_uri) {
+        // // display results in page
+        // document.getElementById('results').innerHTML = 
+        // '<img src="'+data_uri+'"/>';
+        // } );
+        // }
+
+
+        var myVar = setInterval(myTimer, 3000);
+
+        function myTimer(){
+            // var d = new Date();
+            // document.getElementById("demo").innerHTML = d.toLocaleTimeString();    
+            Webcam.snap (function(data_uri){
+            document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+        });
+        }
+    </script>
+</body>
+</html>
